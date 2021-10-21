@@ -67,7 +67,7 @@ Ardından redis-server çalıştırın
 
 ### Celery işçilerini çalıştırmak 
 
-`celery -A crwizard_case.celery worker --loglevel=info -P eventlet`
+`celery -A crwizard_case.celery worker --loglevel=info --pool=solo`
 
 
 ### Mail
