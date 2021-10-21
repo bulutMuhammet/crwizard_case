@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="container mt-5">
+  <h1>Merhaba</h1>
+      <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <br>
+          <label for="">Bir XML dosyası yükleyin.</label>
+          <input name="file" type="file" class="form-control">
+          <button class="btn btn-success mt-2 col-12" type="submit">Gönder</button>
+      </form>
+  {% if files %}
+
+  <h3 class="mt-5">Yüklediklerin</h3>
+  <table class="table mt-3">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">XML Dosyası</th>
+      <th scope="col">Oluşturma Tarihi</th>
+      <th scope="col">Düzenle</th>
+      <th scope="col">Sil</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for file in files     %}
+    <tr>
+      <th scope="row">1</th>
+      <td><a download href="{{ file.xml_file.url }}" >{{ file.filename }}</a></td>
+      <td>{{ file.created_date }}</td>
+      <td>
+          <a href="{% url "home:edit_xml" file.id %}" class="btn btn-sm btn-success"><i class="fa fa-edit "></i></a>
+      </td>
+        <td>
+            <a href="{% url "home:delete_xml" file.id %}" class="btn btn-sm btn-danger"><i class="fa fa-trash "></i></a>
+        </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+
+  </table>
+    {% endif %}
+
+  </div>
+
+{% endblock %}

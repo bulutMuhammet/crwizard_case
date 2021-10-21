@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% load socialaccount %}
+{% block body %}
+<div class="container mt-5 text-center pt-5">
+  <a class="" href="{% provider_login_url 'google' %}">
+      <img src="{% static "img/login_button.png" %}" alt="">
+  </a>
+
+</div>
+{% endblock %}

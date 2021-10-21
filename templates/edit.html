@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+  <div class="container mt-5 text-center">
+
+  <h1>Dosyanın içeriğini değiştir</h1>
+      <form method="post"  class="col-12 mt-4" >
+          {% csrf_token %}
+          {{ form.json_content }}
+        <div>
+                      <button class="btn btn-success col-5 ">Gönder</button>
+
+        </div>
+      </form>
+  </div>
+
+{% endblock %}
